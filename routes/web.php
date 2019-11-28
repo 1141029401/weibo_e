@@ -17,3 +17,6 @@ Route::get('/about', 'StaticPagesController@about')->name('about');
 
 //注册路由
 Route::get('signup', 'UsersController@create')->name('signup');
+
+//资源路由
+Route::resource('users', 'UsersController');
