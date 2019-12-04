@@ -7,6 +7,21 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
+    //中间件过滤
+    public function __construct(){
+
+        // except 黑名单机制, 对应的方法不需要过滤
+        $this->middleware('auth', [            
+          'except' => ['show', 'create', 'store']
+        ]);
+
+        // 限制只有未登录用户才能访问注册页面
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+
+    }
+
 	//创建用户
     public function create()
     {
@@ -62,6 +77,9 @@ class UsersController extends Controller
      * @return [type]           [description]
      */
     public function update(User $user, Request $request){
+
+        //验证授权
+        $this->authorize('update', $user);
 
         $this->validate($request, [
             'name' => 'required|max:50',
