@@ -32,7 +32,7 @@ class SessionsController extends Controller
            	return redirect()->back()->withInput();
     	}
 
-       return;
+      return;
 
     }
 
@@ -42,6 +42,5 @@ class SessionsController extends Controller
       Auth::logout();
       session()->flash('success', '您已成功退出！');
       return redirect('login');
-
     }
 }

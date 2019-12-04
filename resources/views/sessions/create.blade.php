@@ -32,9 +32,7 @@
 
           <button type="submit" class="btn btn-primary">登录</button>
       </form>
-
       <hr>
-
       <p>还没账号？<a href="{{ route('signup') }}">现在注册！</a></p>
     </div>
   </div>
