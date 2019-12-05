@@ -6,6 +6,9 @@
         <section class="status_form">
           <?php echo $__env->make('shared._status_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </section>
+        <h4>微博列表</h4>
+        <hr>
+        <?php echo $__env->make('shared._feed', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
       </div>
       <aside class="col-md-4">
         <section class="user_info">

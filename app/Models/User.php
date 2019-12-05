@@ -58,4 +58,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Status::class);
     } 
+
+    //按时间倒序取出当前用户所有微博
+    public function feed()
+    {
+        return $this->statuses()
+                    ->orderBy('created_at', 'desc');
+    }
 }
