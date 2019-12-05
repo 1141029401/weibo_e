@@ -41,7 +41,7 @@ class SessionsController extends Controller
       return redirect()->intended($fallback);
   	}else{
   		session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
-         	return redirect()->back()->withInput();
+      return redirect()->back()->withInput();
   	}
 
     return;

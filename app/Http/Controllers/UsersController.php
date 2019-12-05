@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -106,6 +107,19 @@ class UsersController extends Controller
 
         return redirect()->route('users.show', $user->id);
 
+    }
+
+    /**
+     * [destroy 删除]
+     * @param  User   $user [description]
+     * @return [type]       [description]
+     */
+    public function destroy(User $user)
+    {
+        $this->authorize('destroy', $user);
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        return back();
     }
 
 }
