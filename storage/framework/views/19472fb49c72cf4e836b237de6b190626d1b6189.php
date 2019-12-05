@@ -14,6 +14,9 @@
         <section class="user_info">
           <?php echo $__env->make('shared._user_info', ['user' => Auth::user()], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </section>
+         <section class="stats mt-2">
+          <?php echo $__env->make('shared._stats', ['user' => Auth::user()], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        </section>
       </aside>
     </div>
   <?php else: ?>

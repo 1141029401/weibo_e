@@ -6,6 +6,10 @@
     <section class="user_info">
       <?php echo $__env->make('shared._user_info', ['user' => $user], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </section>
+    <section class="stats mt-2">
+      <?php echo $__env->make('shared._stats', ['user' => $user], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    </section>
+    <hr>
     <section class="status">
       <?php if($statuses->count() > 0): ?>
         <ul class="list-unstyled">
