@@ -1,3 +1,4 @@
+
 <?php if($feed_items->count() > 0): ?>
   <ul class="list-unstyled">
     <?php $__currentLoopData = $feed_items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $status): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
