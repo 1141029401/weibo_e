@@ -34,11 +34,23 @@ class SessionsController extends Controller
 
     //验证登录，并存储Session
   	if(Auth::attempt($credentials, $request->has("remember"))){
-  		session()->flash('success', '欢迎回来！');
-      //定义默认跳转地址
-      $fallback = route('users.show', Auth::user());
-      //intended  将页面重定向到上一次请求尝试访问的页面上 没有则跳转默认地址
-      return redirect()->intended($fallback);
+
+      if(Auth::user()->activated) {
+
+        session()->flash('success', '欢迎回来！');
+        //定义默认跳转地址
+        $fallback = route('users.show', Auth::user());
+        //intended  将页面重定向到上一次请求尝试访问的页面上 没有则跳转默认地址
+        return redirect()->intended($fallback);
+
+     } else {
+        //自动退出
+        Auth::logout();
+        session()->flash('warning', '你的账号未激活，请检查邮箱中的注册邮件进行激活。');
+        return redirect('/');
+
+     }
+
   	}else{
   		session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
       return redirect()->back()->withInput();
