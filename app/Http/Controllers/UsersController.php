@@ -43,9 +43,12 @@ class UsersController extends Controller
     //显示用户个人中心
     public function show(User $user)
     {	
-    	//dump($user);
-    	//dump(compact('user'));
-        return view('users.show', compact('user'));
+        //查询当前用户所有的微博
+    	$statuses = $user->statuses()
+                           ->orderBy('created_at', 'desc')
+                           ->paginate(10);
+
+        return view('users.show', compact('user', 'statuses'));
     }
 
     //处理创建请求
