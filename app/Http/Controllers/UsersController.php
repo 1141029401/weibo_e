@@ -12,7 +12,7 @@ class UsersController extends Controller
 
         // except 黑名单机制, 对应的方法不需要过滤
         $this->middleware('auth', [            
-          'except' => ['show', 'create', 'store']
+          'except' => ['show', 'create', 'store','index']
         ]);
 
         // 限制只有未登录用户才能访问注册页面
@@ -20,6 +20,15 @@ class UsersController extends Controller
             'only' => ['create']
         ]);
 
+    }
+
+
+    //显示用户
+    public function index(){
+        
+        $users = User::paginate(10);
+
+        return view("users.index",compact("users"));
     }
 
 	//创建用户
@@ -66,7 +75,6 @@ class UsersController extends Controller
 
 
         return view("users.edit",compact("user"));
-
     }
 
 

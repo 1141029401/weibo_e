@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+    	//解除模型保护
+    	Model::unguard();
+
+        $this->call(UsersTableSeeder::class);
+
+        //加入模型保护
+        Model::reguard();
     }
 }
