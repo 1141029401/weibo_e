@@ -6,6 +6,11 @@
     <section class="user_info">
       <?php echo $__env->make('shared._user_info', ['user' => $user], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </section>
+  
+    <?php if(Auth::check()): ?>
+      <?php echo $__env->make('users._follow_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php endif; ?>
+
     <section class="stats mt-2">
       <?php echo $__env->make('shared._stats', ['user' => $user], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </section>
